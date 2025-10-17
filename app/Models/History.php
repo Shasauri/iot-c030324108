@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lamp extends Model
+class History extends Model
 {
     //
     use HasFactory;
-    protected $fillable = ['name','status'];
+    protected $fillable = ['lamp_id','status'];
 
-    public function histories(){
-        return $this->hasMany(History::class);
+    public function lamp(){
+        return $this->belongsTo(Lamp::class);
     }
 }

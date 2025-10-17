@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lamps', function (Blueprint $table) {
+        Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('status')->default(0);
+            $table->foreignId('lamp_id')->references('id')->on('lamps')->cascadeOnDelete();
+            $table->enum('status',['on','off']);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lamps');
+        Schema::dropIfExists('histories');
     }
 };
